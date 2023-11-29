@@ -7,6 +7,13 @@ module.exports = {
     './plugins/**/*.{js,ts}',
   ],
   theme: {
+    extend: {
+      fontFamily: {
+        'display' : ['Playfair Display', 'serif'],
+        'heading' : ['Fira Sans Condensed', 'serif'],
+        'sans' : ['Overpass', 'sans-serif']
+      }
+    },
     colors: {
       primary: '#00DC82',
       secondary: '#002E3B',
@@ -19,5 +26,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

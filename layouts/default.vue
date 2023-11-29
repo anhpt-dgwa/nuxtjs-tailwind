@@ -1,13 +1,13 @@
 <template>
   <div data-theme="winter" class="">   
-    <!-- <header>
+    <header>
       <Header/>
-    </header> -->
-    <main class="h-screen w-full grid  overflow-auto ">
+    </header>
+    <main class="w-full grid overflow-auto ">
       <slot/>
     </main>
-    <!-- <footer>
+    <footer>
       <Footer/>
-    </footer> -->
+    </footer>
   </div>
 </template>
