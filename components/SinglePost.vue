@@ -1,21 +1,15 @@
 <template>
+  <div class="relative h-96">
+    <img :src="props.post.fields.thumnail.fields.file.url" class="w-full h-full object-cover" />
+  </div>
 
-  <div class="bg-white py-6 sm:py-8 lg:py-12">
-    <div class="max-w-screen-md px-4 md:px-8 mx-auto">
-      <h1 class="text-gray-800 text-2xl sm:text-3xl font-bold text-center mb-4 md:mb-6">{{ props.post.fields.title }}
-      </h1>
-      <span class="block text-gray-200 text-sm">{{ formatDate(props.post.sys.updatedAt) }}</span>
-      <div class="bg-gray-100 overflow-hidden rounded-lg shadow-lg relative mb-6 md:mb-8">
-        <img :src="props.post.fields.thumnail.fields.file.url"
-          loading="lazy" alt="" class="w-full h-full object-cover object-center"/>
-      </div>
-      <!-- <blockquote class="text-gray-500 sm:text-lg italic border-l-4 pl-4 md:pl-6 mb-6 md:mb-8">“
-        {{ props.post.fields.summary }}”
-      </blockquote> -->
-      <p class="text-gray-500 sm:text-lg mb-6 md:mb-8">
+  <div class="max-w-4xl mx-auto bg-white py-12 px-12 lg:px-24 -mt-32 relative z-10">
+      <h2 class="mt-4 uppercase tracking-widest text-xs text-gray-600">{{ formatDate(props.post.sys.updatedAt) }}</h2>
+      <h1 class="font-display text-2xl md:text-3xl text-gray-900 mt-4">{{ props.post.fields.title }}</h1>
+
+      <div class="prose prose-sm sm:prose lg:prose-lg mt-6">
         {{ props.post.fields.content }}
-      </p>
-    </div>
+      </div>  
   </div>
 </template>
 

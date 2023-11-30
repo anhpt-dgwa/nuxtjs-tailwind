@@ -1,28 +1,19 @@
 <template>
-  <div>
-    <NuxtLink
-      :to="`/post/${props.post.sys.id}`"
-      class="group flex flex-col bg-gray-100 rounded-lg shadow-lg overflow-hidden relative"
-    >
-      <!-- <img :src="props.post.fields.thumbnail.fields.file.url" /> -->
-      
-      <img :src="props.post.fields.thumnail.fields.file.url"
-          loading="lazy" :alt="props.post.fields.title" class="object-cover object-center"/>
-      
-      <div
-        class="bg-gradient-to-t from-gray-800 md:via-transparent to-transparent absolute inset-0 pointer-events-none"
-      ></div>
+  <NuxtLink :to="`/post/${props.post.sys.id}`" >
+      <img :src="props.post.fields.thumnail.fields.file.url" class="w-full h-52 md:h-64 lg:h-96 xl:h-64 object-cover" />
+  </NuxtLink>
 
-      <div class="relative p-4 mt-auto">
-        <span class="block text-gray-200 text-sm">{{ formatDate(props.post.sys.updatedAt) }}</span>
-        <h2
-          class="text-xl font-semibold transition duration-100 mb-2"
-        >
-          {{ props.post.fields.title }}
-        </h2>
-
-        <span class="text-indigo-300 font-semibold">Read more</span>
-      </div>
+  <div class="bg-gray-50 p-8">
+    <div class="text-xs text-gray-600 uppercase font-semibold">{{ formatDate(props.post.sys.updatedAt) }}</div>
+    <h2 class="mt-3 text-3xl mb-6 font-display text-black leading-tight max-w-sm">
+      {{ props.post.fields.title }}
+    </h2>
+    <p class="mt-4 max-w-md">
+      {{ props.post.fields.description }}
+    </p>
+    <NuxtLink :to="`/post/${props.post.sys.id}`" class="flex items-center mt-6 uppercase text-sm text-black font-semibold">
+        Read article
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"></path></svg>
     </NuxtLink>
   </div>
 </template>
