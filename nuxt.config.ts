@@ -9,4 +9,7 @@ export default defineNuxtConfig({
   content: {
     // https://content.nuxtjs.org/api/configuration
   },
+  plugins: [
+    'plugins/contentful'	// 追記
+  ],
 })

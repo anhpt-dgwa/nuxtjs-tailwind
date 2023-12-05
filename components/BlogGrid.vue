@@ -5,15 +5,17 @@
   </div>
 
   <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 pt-12 pb-24">
-    <div v-for="post in data?.items" :key="post.id">
-      <PostCard :post="post" />
-    </div>
+    <v-row v-if="data.length">
+      <div v-for="post in data?.items" :key="post.id">
+        <PostCard :post="post" />
+      </div>
+    </v-row>
   </div>
-  <!-- <v-pagination
+  <v-pagination
     v-model="page"
     :length="length"
     @input = "pageChange"
-  ></v-pagination> -->
+  ></v-pagination>
   <nav class="flex justify-center pb-24" aria-label="Page navigation example">
     <ul class="inline-flex -space-x-px text-base h-10">
       <li>
@@ -43,20 +45,20 @@
 
 
 <script setup>
-  import {useNuxtApp} from "nuxt/app";
-  const {$client}=useNuxtApp()
+  // import {useNuxtApp} from "nuxt/app";
+  // const {$client}=useNuxtApp()
 
-  const data =await $client.getEntries({
-    content_type: ['blog'],
-    skip: 0,
-    limit: 2
-  })
-  console.log(data)
+  // const data =await $client.getEntries({
+  //   content_type: ['blog'],
+  //   skip: 0,
+  //   limit: 2
+  // })
+  // console.log(data)
 </script>
 
 <script>
-//import draftChip from '~/components/posts/draftChip'
-//import { mapState, mapGetters } from 'vuex' 
+import draftChip from '~/components/posts/draftChip'
+import { mapState, mapGetters } from 'vuex' 
 
 export default {
   data () {
@@ -64,7 +66,24 @@ export default {
       page: 1,
       length:0,
       data: [],
-      pageSize: 2,
+      pageSize: 10,
+    }
+  },
+  components: {
+    draftChip
+  },
+  computed: {
+    ...mapState(['posts']), 
+    ...mapGetters(['setEyeCatch', 'draftChip', 'linkTo']),
+    categoryColor() {
+      return (category) => {
+        switch (category.fields.name) {
+          case 'RubyOnRails': return '#C73A31'
+          case 'Nuxt.js': return '#236244'
+          case 'コラム': return 'primary'
+          default: return 'grey darken-3'
+        }
+      }
     }
   },
   mounted: function(){

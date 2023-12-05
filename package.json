@@ -18,6 +18,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "contentful": "^10.6.12"
+    "contentful": "^10.6.12",
+    "vuex": "^4.1.0"
   }
 }
