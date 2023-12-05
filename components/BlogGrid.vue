@@ -9,11 +9,11 @@
       <PostCard :post="post" />
     </div>
   </div>
-  <v-pagination
+  <!-- <v-pagination
     v-model="page"
     :length="length"
     @input = "pageChange"
-  ></v-pagination>
+  ></v-pagination> -->
   <nav class="flex justify-center pb-24" aria-label="Page navigation example">
     <ul class="inline-flex -space-x-px text-base h-10">
       <li>
@@ -47,9 +47,9 @@
   const {$client}=useNuxtApp()
 
   const data =await $client.getEntries({
-    content_type: ['blog'], 
-    //skip: 2,
-    //limit: 2
+    content_type: ['blog'],
+    skip: 0,
+    limit: 2
   })
   console.log(data)
 </script>
